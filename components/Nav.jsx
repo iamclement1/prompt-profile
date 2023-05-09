@@ -30,9 +30,9 @@ const Nav = () => {
             {
                session?.user ? (
                   <div className='flex gap-3 md:gap-5'>
-                     <Link href={'/create-post'}
+                     <Link href={'/create-profile'}
                         className='black_btn'>
-                        Create Post
+                        Create Profile
                      </Link>
                      <button type='button '
                         onClick={signOut}
@@ -41,9 +41,20 @@ const Nav = () => {
                      </button>
 
                      {/* profile */}
-                     <Link href={'/profile'}>
-                        <FaUserCircle className='text-2xl mt-1' />
-                     </Link>
+                     {
+                        session?.user ? (
+                           <Image src={session?.user.image}
+                              width={37}
+                              height={37}
+                              className='rounded-full'
+                              alt='profile'
+                              onClick={() => setToggleDropdown((prev) => !prev)} />
+                        ) : (
+                           <Link href={'/profile'}>
+                              <FaUserCircle className='text-2xl mt-1' />
+                           </Link>
+                        )
+                     }
                   </div>
                ) : (
                   <>
@@ -67,22 +78,14 @@ const Nav = () => {
          <div className='sm:hidden flex relative'>
             {session?.user ? (
                <div className='flex'>
-                  {/* <Image
-                     src={session?.user.image}
-                     width={37}
-                     height={37}
-                     className='rounded-full'
-                     alt='profile'
-                     onClick={() => setToggleDropdown(!toggleDropdown)}
-                  /> */}
                   {
                      session?.user ? (
-                        <Image src={session?.user.images}
-                        width={37}
-                        height={37}
-                        className='rounded-full'
-                        alt='profile'
-                        onClick={() => setToggleDropdown((prev) =>!prev)} />
+                        <Image src={session?.user.image}
+                           width={37}
+                           height={37}
+                           className='rounded-full'
+                           alt='profile'
+                           onClick={() => setToggleDropdown((prev) => !prev)} />
                      ) : (
                         <FaUserCircle className='text-2xl mt-1'
                            onClick={() => setToggleDropdown((prev) => !prev)} />
