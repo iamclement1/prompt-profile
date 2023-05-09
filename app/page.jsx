@@ -16,7 +16,7 @@ const Home = () => {
          </p>
 
          {/* feeds */}
-         <Feeds />
+         <Feeds /> 
       </section>
    )
 }
