@@ -15,10 +15,6 @@ export const POST =  async(req, res) => {
       return new Response(JSON.stringify(newProfile), {
          status: 201,
       })
-      // res.status(201).json({
-      //    message: "Profile created",
-      //    profile: newProfile
-      // });
    } catch (error) {
       return new Response("Failed to create a new prompt", {
          status: 500
