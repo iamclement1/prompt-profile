@@ -22,6 +22,11 @@ const Feeds = () => {
 
   }
 
+  const [likes, setLikes] = useState(0);
+  const handleLikes = (event) => {
+    event.preventDefault();
+    setLikes(likes + 1);
+  };
   useEffect(() => {
     const fetchProfile = async () => {
       const response = await fetch('/api/profile');
@@ -47,6 +52,9 @@ const Feeds = () => {
       <ProfileCardList
       data={profile}
       handleTagClick={() => {}} />
+      <div>
+        <button onClick={handleLikes}>Likes {likes}</button>
+      </div>
     </section>
   )
 }
